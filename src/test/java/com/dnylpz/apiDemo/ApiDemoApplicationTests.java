@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+@SpringBootTest()
 class ApiDemoApplicationTests {
 	@Value("${app.url}")
 	private String appUrl;
@@ -19,10 +22,10 @@ class ApiDemoApplicationTests {
 	@Value("chrome,firefox,edge")
 	private List<String> browsers;
 
-	@Autowired
-	private WebDriver webDriver;
+	//@Autowired
+	//private WebDriver webDriver;
 
-	@Test
+	/*@Test
 	public void testGoogleSearch() {
 		webDriver.get(appUrl);
 		WebElement searchBox = webDriver.findElement(By.name("q"));
@@ -30,30 +33,15 @@ class ApiDemoApplicationTests {
 		searchBox.sendKeys(Keys.RETURN);
 		WebElement results = webDriver.findElement(By.id("search"));
 		assertTrue(results.isDisplayed());
-	}
+	}*/
 
 	@Test
-	public void test2() {
+	public void testAppIsRunning() {
 		// Test code
-		System.out.println("test2");
-	}
-
-	@Test
-	public void test3() {
-		// Test code
-		System.out.println("test3");
-	}
-
-	@Test
-	public void test4() {
-		// Test code
-		System.out.println("test4");
-	}
-
-	@Test
-	public void test5() {
-		// Test code
-		System.out.println("test5");
+		RestAssured.baseURI = appUrl;
+		Response res = RestAssured.when().get("/greeting");
+		res.then().statusCode(200);
+		System.out.println(res.statusCode());
 	}
 
 }

@@ -11,13 +11,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 @Configuration
 public class SeleniumConfig {
 
-    @Bean
+   /* @Bean
     public WebDriver webDriver() {
     	WebDriverManager.chromedriver().setup();
     	ChromeOptions chromeOptions = new ChromeOptions();
 		chromeOptions.addArguments("--remote-allow-origins=*");
         // add any desired browser options here
         return new ChromeDriver(chromeOptions);
-    }
+    }*/
 
 }
