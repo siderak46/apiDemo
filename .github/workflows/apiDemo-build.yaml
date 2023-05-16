@@ -1,11 +1,16 @@
 name: Java CI
 
-on: [push]
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - staging
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -15,3 +20,9 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run: ./mvnw clean package
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo 'hello world'
