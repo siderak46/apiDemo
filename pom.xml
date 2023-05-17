@@ -11,7 +11,7 @@
 	<groupId>com.dnylpz</groupId>
 	<artifactId>apiDemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>apiDemo</name>
 	<description>Demo project for a rest api to demo stuff</description>
 	<properties>

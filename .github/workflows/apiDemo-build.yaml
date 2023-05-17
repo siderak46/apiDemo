@@ -25,4 +25,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - run: echo 'hello world'
+      - run: ./mvnw run &
+      - run: ./mvnw test
